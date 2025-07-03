@@ -72,6 +72,7 @@ public class SistemaDeCazadoresTests {
 	public void queUnCazadorRuralIntenteCazarUnProfugo() {
 		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador rural = new CazadorRural(30);
+		agencia.agregarCazador(rural);
 		
 		Zona zona = new Zona("Haedo");
 		Profugo profu1 = new Profugo(true,10,5);//prófugo capturable
@@ -88,6 +89,7 @@ public class SistemaDeCazadoresTests {
 	public void queUnCazadorSigilosoIntenteCazarUnProfugo() {
 		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador sigiloso = new CazadorSigiloso(25);
+		agencia.agregarCazador(sigiloso);
 		
 		Zona zona = new Zona("Haedo");
 		Profugo profu1 = new Profugo(true,10,5);//prófugo capturable
@@ -136,7 +138,48 @@ public class SistemaDeCazadoresTests {
 		assertEquals( nuevaInocencia,profu2.getNivelDeInocencia());
 		assertEquals( nuevoEstado,profu2.getEsNervioso());
 		assertEquals( nuevaHabilidad,profu2.getNivelDeHabilidad());
+	}
 	
+	@Test
+	public void queUnCazadorRuralPuedaIntimidarUnProfugo() {
+		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
+		Cazador rural = new CazadorRural(30);
+		agencia.agregarCazador(rural);
+		
+		Zona zona = new Zona("Haedo");
+		Profugo profu1 = new Profugo(false,10,5);//prófugo capturable
+		Profugo profu2 = new Profugo(false,40,5);//prófugo intimidable
+		zona.agregarProfugo(profu1);
+		zona.agregarProfugo(profu2);
+		
+		rural.trabajar(zona);
+		Integer nuevaInocencia =38;
+		Boolean nuevoEstado = true;
+		Integer nuevaHabilidad = 5;
+		assertEquals( nuevaInocencia,profu2.getNivelDeInocencia());
+		assertEquals( nuevoEstado,profu2.getEsNervioso());
+		assertEquals( nuevaHabilidad,profu2.getNivelDeHabilidad());
+	}
+	
+	@Test
+	public void queUnCazadorSigilosoPuedaIntimidarUnProfugo() {
+		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
+		Cazador sigiloso = new CazadorSigiloso(25);
+		agencia.agregarCazador(sigiloso);
+		
+		Zona zona = new Zona("Haedo");
+		Profugo profu1 = new Profugo(false,10,5);//prófugo capturable
+		Profugo profu2 = new Profugo(false,40,15);//prófugo intimidable
+		zona.agregarProfugo(profu1);
+		zona.agregarProfugo(profu2);
+		
+		sigiloso.trabajar(zona);
+		Integer nuevaInocencia =38;
+		Boolean nuevoEstado = false;
+		Integer nuevaHabilidad = 10;
+		assertEquals( nuevaInocencia,profu2.getNivelDeInocencia());
+		assertEquals( nuevoEstado,profu2.getEsNervioso());
+		assertEquals( nuevaHabilidad,profu2.getNivelDeHabilidad());
 	}
 
 }

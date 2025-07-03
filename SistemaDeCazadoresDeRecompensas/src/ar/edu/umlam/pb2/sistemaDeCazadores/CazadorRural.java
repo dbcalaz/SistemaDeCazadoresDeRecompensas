@@ -6,7 +6,6 @@ public class CazadorRural extends Cazador {
 
 	public CazadorRural(Integer experiencia) {
 		super(experiencia);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
