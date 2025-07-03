@@ -65,6 +65,7 @@ public class SistemaDeCazadoresTests {
 		
 		urbano.trabajar(zona);	
 		assertTrue(urbano.getProfugosCapturados().contains(profu1));
+		assertFalse(urbano.getProfugosCapturados().contains(profu2));
 	}
 
 }
