@@ -64,8 +64,40 @@ public class SistemaDeCazadoresTests {
 		zona.agregarProfugo(profu2);
 		
 		urbano.trabajar(zona);	
-		assertTrue(urbano.getProfugosCapturados().contains(profu1));//verificar que se remueve de la zona.
+		assertTrue(urbano.getProfugosCapturados().contains(profu1));
 		assertFalse(urbano.getProfugosCapturados().contains(profu2));
+	}
+	
+	@Test
+	public void queUnCazadorRuralIntenteCazarUnProfugo() {
+		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
+		Cazador rural = new CazadorRural(30);
+		
+		Zona zona = new Zona("Haedo");
+		Profugo profu1 = new Profugo(true,10,5);//prófugo capturable
+		Profugo profu2 = new Profugo(true,30,5);//prófugo intimidable
+		zona.agregarProfugo(profu1);
+		zona.agregarProfugo(profu2);
+		
+		rural.trabajar(zona);	
+		assertTrue(rural.getProfugosCapturados().contains(profu1));
+		assertFalse(rural.getProfugosCapturados().contains(profu2));
+	}
+	
+	@Test
+	public void queUnCazadorSigilosoIntenteCazarUnProfugo() {
+		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
+		Cazador sigiloso = new CazadorSigiloso(25);
+		
+		Zona zona = new Zona("Haedo");
+		Profugo profu1 = new Profugo(true,10,5);//prófugo capturable
+		Profugo profu2 = new Profugo(true,30,5);//prófugo intimidable
+		zona.agregarProfugo(profu1);
+		zona.agregarProfugo(profu2);
+		
+		sigiloso.trabajar(zona);	
+		assertTrue(sigiloso.getProfugosCapturados().contains(profu1));
+		assertFalse(sigiloso.getProfugosCapturados().contains(profu2));
 	}
 	
 	@Test
