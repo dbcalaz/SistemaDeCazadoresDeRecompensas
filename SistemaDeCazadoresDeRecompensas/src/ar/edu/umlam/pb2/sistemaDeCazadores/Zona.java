@@ -24,6 +24,8 @@ public class Zona {
 		return profugosEnZona;
 	}	
 
-	
+	public void removerProfugoCapturado(Profugo profu) {
+		this.profugosEnZona.remove(profu);
+	}
 
 }

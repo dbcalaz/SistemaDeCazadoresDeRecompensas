@@ -69,6 +69,23 @@ public class SistemaDeCazadoresTests {
 	}
 	
 	@Test
+	public void queSePuedaRemoverCorrectamenteUnProfugoDeLaZonaSiFueCapturado() {
+		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
+		Cazador urbano = new CazadorUrbano(20);
+		agencia.agregarCazador(urbano);
+		
+		Zona zona = new Zona("Haedo");
+		Profugo profu1 = new Profugo(false,10,5);//prófugo capturable
+		Profugo profu2 = new Profugo(true,30,5);//prófugo intimidable
+		zona.agregarProfugo(profu1);
+		zona.agregarProfugo(profu2);
+		
+		urbano.trabajar(zona);	
+		
+		assertFalse(zona.getProfugosEnZona().contains(profu1));
+	}
+	
+	@Test
 	public void queUnCazadorUrbanoPuedaIntimidarUnProfugo() {
 		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador urbano = new CazadorUrbano(20);
