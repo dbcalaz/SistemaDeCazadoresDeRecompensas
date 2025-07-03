@@ -15,7 +15,7 @@ public class SistemaDeCazadoresTests {
 	@Test
 	public void queSePuedaAgregarCorrectamenteUnCazadorUrbanoAlaAgencia() {
 		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
-		Cazador urbano = new CazadorUrbano();
+		Cazador urbano = new CazadorUrbano(20);
 		
 		assertTrue(agencia.agregarCazador(urbano));
 	}
@@ -23,7 +23,7 @@ public class SistemaDeCazadoresTests {
 	@Test
 	public void queSePuedaAgregarCorrectamenteUnCazadorRuralAlaAgencia() {
 		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
-		Cazador rural = new CazadorRural();
+		Cazador rural = new CazadorRural(30);
 		
 		assertTrue(agencia.agregarCazador(rural));
 	}
@@ -31,7 +31,7 @@ public class SistemaDeCazadoresTests {
 	@Test
 	public void queSePuedaAgregarCorrectamenteUnCazadorSigilosoAlaAgencia() {
 		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
-		Cazador sigiloso = new CazadorSigiloso();
+		Cazador sigiloso = new CazadorSigiloso(25);
 		
 		assertTrue(agencia.agregarCazador(sigiloso));
 	}
@@ -50,5 +50,7 @@ public class SistemaDeCazadoresTests {
 		
 		assertTrue(zona.agregarProfugo(profu));
 	}
+	
+	
 
 }
