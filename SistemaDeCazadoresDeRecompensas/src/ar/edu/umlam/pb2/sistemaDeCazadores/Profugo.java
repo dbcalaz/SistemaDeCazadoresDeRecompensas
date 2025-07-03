@@ -35,6 +35,25 @@ public class Profugo {
 	public void setNivelDeHabilidad(Integer nivelDeHabilidad) {
 		this.nivelDeHabilidad = nivelDeHabilidad;
 	}
+
+	public void serIntimidado(String fraseDeIntimidacion) {
+		
+		if(getNivelDeInocencia() <= 1) {
+			setNivelDeInocencia(0); 
+		}else {
+			setNivelDeInocencia(getNivelDeInocencia()-2);
+		}
+		
+		if(fraseDeIntimidacion.equals("Soy un cazador urbano")) {
+			this.esNervioso = false;
+		}else if(fraseDeIntimidacion.equals("Soy un cazador rural")){
+			setEsNervioso(true);
+			//Verificar en caso de que el prófugo haga entrenamientoElitte.
+		}else if(fraseDeIntimidacion.equals("Soy un cazador sigiloso")) {
+			setNivelDeHabilidad(getNivelDeHabilidad() - 5);
+		}
+		
+	}
 	
 	
 
