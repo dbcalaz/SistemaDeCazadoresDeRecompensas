@@ -5,7 +5,7 @@ public abstract class Cazador {
 	protected Integer experiencia;
 	
 	public Cazador() {
-		this.experiencia = 0;
+		this.experiencia = 20;
 	}
 
 }

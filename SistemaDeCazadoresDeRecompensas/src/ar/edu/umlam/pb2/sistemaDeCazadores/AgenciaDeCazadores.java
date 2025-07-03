@@ -12,11 +12,10 @@ public class AgenciaDeCazadores {
 	}
 
 	public Boolean agregarCazador(Cazador cazador) {
-		Boolean seAgrego = false;
 		if(this.cazadores.add(cazador)) {
-			seAgrego = true;
+			return true;
 		}
-		return seAgrego	;
+		return false;
 	}
 	
 	

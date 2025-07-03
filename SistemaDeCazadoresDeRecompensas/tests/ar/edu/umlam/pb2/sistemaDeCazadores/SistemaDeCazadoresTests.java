@@ -35,5 +35,20 @@ public class SistemaDeCazadoresTests {
 		
 		assertTrue(agencia.agregarCazador(sigiloso));
 	}
+	
+	@Test
+	public void queSePuedaCrearUnaZonaCorrectamente() {
+		Zona zona = new Zona("Haedo");
+		
+		assertNotNull(zona);
+	}
+	
+	@Test
+	public void queSePuedaAgregarCorrectamenteUnProfugoAUnaZona() {
+		Zona zona = new Zona("Haedo");
+		Profugo profu = new Profugo(true,10,5);
+		
+		assertTrue(zona.agregarProfugo(profu));
+	}
 
 }
