@@ -181,5 +181,28 @@ public class SistemaDeCazadoresTests {
 		assertEquals( nuevoEstado,profu2.getEsNervioso());
 		assertEquals( nuevaHabilidad,profu2.getNivelDeHabilidad());
 	}
+	
+	@Test
+	public void queUnCazadorPuedaSumarExperienciaCorrectamente() {
+		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
+		Cazador sigiloso = new CazadorSigiloso(25);
+		agencia.agregarCazador(sigiloso);
+		
+		Zona zona = new Zona("Haedo");
+		Profugo profu1 = new Profugo(false,40,59);//prófugo intimidable - como el cazador es sigiloso la hábilidad del prófugo queda en 5 menos
+		Profugo profu2 = new Profugo(false,30,60);//prófugo intimidable
+		Profugo profu3 = new Profugo(false,35,70);//prófugo intimidable
+		Profugo profu4 = new Profugo(false,10,5);//prófugo capturable
+		zona.agregarProfugo(profu1);
+		zona.agregarProfugo(profu2);
+		zona.agregarProfugo(profu3);
+		zona.agregarProfugo(profu4);
+		
+		sigiloso.trabajar(zona);
+		Integer nuevaExperiencia = 81;
+		
+		assertEquals(nuevaExperiencia, sigiloso.getExperiencia());
+	
+	}
 
 }
