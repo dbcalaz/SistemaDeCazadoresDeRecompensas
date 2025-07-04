@@ -386,5 +386,25 @@ public class SistemaDeCazadoresTests {
 		Integer inocenciaEsperada = 40;
 		assertEquals(inocenciaEsperada, profu.getNivelDeInocencia());
 	}
+	
+	@Test
+	public void queUnProfugoConProteccionLegalAlSerIntimidadoPorUnCazadorSuInocenciaNoSeaMenorA40() {		
+	    AgenciaDeCazadores agencia = new AgenciaDeCazadores();
+	    Cazador rural = new CazadorRural(30);
+	    agencia.agregarCazador(rural);
+	    
+	    Profugo profugo = new Profugo(false, 41, 9);
+	    ProteccionLegal pLegal = new ProteccionLegal();
+	    profugo.entrenarseCon(pLegal);
+		
+
+	    Zona zona = new Zona("Haedo");
+	    zona.agregarProfugo(profugo);
+
+	    rural.trabajar(zona);
+	    
+	    Integer inocenciaEsperada = 40;
+		assertEquals(inocenciaEsperada, profugo.getNivelDeInocencia());
+	}
 
 }

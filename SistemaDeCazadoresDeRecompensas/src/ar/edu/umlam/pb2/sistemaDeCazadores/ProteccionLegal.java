@@ -6,7 +6,7 @@ public class ProteccionLegal implements Entrenable{
 	public void aplicarA(Profugo p) {
 		if(p.getNivelDeInocencia() < 40) {
 			p.setNivelDeInocencia(40);
-		}			
+		}
 	}
 
 }

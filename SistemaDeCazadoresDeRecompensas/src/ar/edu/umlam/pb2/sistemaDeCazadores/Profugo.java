@@ -47,6 +47,12 @@ public class Profugo {
 			setNivelDeInocencia(0); 
 		}else {
 			setNivelDeInocencia(getNivelDeInocencia()-2);
+			//Acá siento que debería estar la lógica de que evalúe si el prófugo tiene protección legal
+			for(Entrenable e : this.entrenamientos) {
+				if(e instanceof ProteccionLegal &&  getNivelDeInocencia() < 40) {
+					setNivelDeInocencia(40);
+				}
+			}
 		}
 		
 		if(fraseDeIntimidacion.equals("Soy un cazador urbano")) {
