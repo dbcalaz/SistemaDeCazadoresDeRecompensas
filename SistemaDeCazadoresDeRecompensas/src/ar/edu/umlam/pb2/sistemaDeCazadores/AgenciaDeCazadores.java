@@ -31,9 +31,9 @@ public class AgenciaDeCazadores {
 		return totalCapturados;	
 	}
 	
-	public Cazador cazadorConMasCapturas() {
+	public Cazador getCazadorConMasCapturas() {
 	    Cazador cazadorConMasCapturas = null;
-	    int maxCapturas = 0;
+	    Integer maxCapturas = 0;
 
 	    for (Cazador c : this.cazadores) {
 	        Integer cantidadCapturas = c.getProfugosCapturados().size();
@@ -45,6 +45,25 @@ public class AgenciaDeCazadores {
 	    }
 	    return cazadorConMasCapturas;
 	}	
+	
+	public Profugo getProfugoMasHabilCapturado() {
+		Profugo profugoMasHabil = null;
+		Integer maxHabilidad = 0;
+		
+		for(Cazador c : this.cazadores) {
+			
+			for(Profugo p : c.getProfugosCapturados()) {
+				
+				Integer habilidad = p.getNivelDeHabilidad();
+					
+				if(habilidad > maxHabilidad) {
+					maxHabilidad = habilidad;
+					profugoMasHabil = p;
+				}
+			}
+		}
+		return profugoMasHabil;
+	}
 	
 
 }
