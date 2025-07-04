@@ -337,5 +337,16 @@ public class SistemaDeCazadoresTests {
 		Integer habilidadEsperada = 18;
 		assertEquals(habilidadEsperada, profu.getNivelDeHabilidad());
 	}
+	
+	@Test
+	public void queUnProfugoSePuedaEntrenarMasDeUnaVezConArtesMarcialesAvanzadas() {		
+		Profugo profu = new Profugo(true,40,9);//nervioso - inocencia - habilidad
+		ArteMarcialAvanzada arteMarcial = new ArteMarcialAvanzada();
+		profu.entrenarseCon(arteMarcial);
+		profu.entrenarseCon(new ArteMarcialAvanzada());
+		
+		Integer habilidadEsperada = 36;
+		assertEquals(habilidadEsperada, profu.getNivelDeHabilidad());
+	}
 
 }
