@@ -39,8 +39,13 @@ public abstract class Cazador {
 		porque sino el remover un prófugo capturado al mismo tiempo que corría el for,
 		éste se rompía y salteaba al prófugo que quedaba y no entraba en el método intentarCapturar()*/
 		List<Profugo> profugosIntimidados = new ArrayList<>();
-		List<Profugo> profugosCapturados = new ArrayList<>();
+		List<Profugo> profugosCapturados = new ArrayList<>();		  	
 		List<Profugo> profugosEnZona = new ArrayList<>(zona.getProfugosEnZona());
+		
+		if (zona.getProfugosEnZona().isEmpty()) {
+	        throw new ZonaSinProfugosException("No hay prófugos en la zona.");
+	    }
+		
 	    for (Profugo p : profugosEnZona) {
 	        intentarCapturar(p, zona, profugosIntimidados,profugosCapturados);
 	    }

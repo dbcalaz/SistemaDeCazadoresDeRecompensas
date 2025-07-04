@@ -406,5 +406,13 @@ public class SistemaDeCazadoresTests {
 	    Integer inocenciaEsperada = 40;
 		assertEquals(inocenciaEsperada, profugo.getNivelDeInocencia());
 	}
+	
+	@Test(expected = ZonaSinProfugosException.class)
+	public void queNoSePuedaTrabajarEnUnaZonaSinProfugos() {
+	    Zona zona = new Zona("Haedo");
+	    Cazador cazador = new CazadorUrbano(30);
+
+	    cazador.trabajar(zona); // lanza la excepción
+	}	
 
 }
