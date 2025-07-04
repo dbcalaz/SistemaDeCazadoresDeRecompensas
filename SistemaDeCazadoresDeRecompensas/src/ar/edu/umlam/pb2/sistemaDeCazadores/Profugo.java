@@ -1,15 +1,20 @@
 package ar.edu.umlam.pb2.sistemaDeCazadores;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Profugo {
 	
 	private Boolean esNervioso;
 	private Integer nivelDeInocencia;
 	private Integer nivelDeHabilidad;
+	private List<Entrenable> entrenamientos;
 
 	public Profugo(Boolean esNervioso, Integer nivelDeInocencia, Integer nivelDeHabilidad) {
 		this.esNervioso = esNervioso;
 		this.nivelDeInocencia = nivelDeInocencia;
 		this.nivelDeHabilidad = nivelDeHabilidad;
+		this.entrenamientos = new ArrayList<>();
 	}
 
 	public Boolean getEsNervioso() {
@@ -53,6 +58,11 @@ public class Profugo {
 			setNivelDeHabilidad(getNivelDeHabilidad() - 5);
 		}
 		
+	}
+	
+	public void entrenarseCon(Entrenable entrenamiento) {
+		entrenamiento.aplicarA(this);
+		this.entrenamientos.add(entrenamiento);	
 	}
 	
 	

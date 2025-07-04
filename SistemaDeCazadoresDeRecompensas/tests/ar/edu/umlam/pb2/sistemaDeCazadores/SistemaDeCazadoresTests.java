@@ -327,5 +327,15 @@ public class SistemaDeCazadoresTests {
 		
 		assertEquals(profu4, agencia.getProfugoMasHabilCapturado());
 	}
+	
+	@Test
+	public void queUnProfugoSePuedaEntrenarConArtesMarcialesAvanzadas() {		
+		Profugo profu = new Profugo(true,40,9);//nervioso - inocencia - habilidad
+		ArteMarcialAvanzada arteMarcial = new ArteMarcialAvanzada();
+		profu.entrenarseCon(arteMarcial);
+		
+		Integer habilidadEsperada = 18;
+		assertEquals(habilidadEsperada, profu.getNivelDeHabilidad());
+	}
 
 }
