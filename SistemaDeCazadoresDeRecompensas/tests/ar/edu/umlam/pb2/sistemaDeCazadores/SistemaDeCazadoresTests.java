@@ -376,5 +376,15 @@ public class SistemaDeCazadoresTests {
 
 	    assertFalse(profugo.getEsNervioso());
 	}
+	
+	@Test
+	public void queUnProfugoSePuedaEntrenarConProteccionLegal() {		
+		Profugo profu = new Profugo(true,30,9);//nervioso - inocencia - habilidad
+		ProteccionLegal pLegal = new ProteccionLegal();
+		profu.entrenarseCon(pLegal);
+		
+		Integer inocenciaEsperada = 40;
+		assertEquals(inocenciaEsperada, profu.getNivelDeInocencia());
+	}
 
 }
