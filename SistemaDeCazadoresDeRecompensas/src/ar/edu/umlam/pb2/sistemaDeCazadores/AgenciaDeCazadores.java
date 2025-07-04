@@ -18,6 +18,18 @@ public class AgenciaDeCazadores {
 		return false;
 	}
 	
+	//Reportes
+	public Integer getCapturados(){
+		Integer totalCapturados = 0;
+		List<Profugo> profugosCapturados = new ArrayList<>();
+		for(Cazador c : this.cazadores) {
+			for(Profugo p : c.getProfugosCapturados()) {
+				profugosCapturados.add(p);
+			}
+		}
+		totalCapturados = profugosCapturados.size();
+		return totalCapturados;	
+	}
 	
 
 }
