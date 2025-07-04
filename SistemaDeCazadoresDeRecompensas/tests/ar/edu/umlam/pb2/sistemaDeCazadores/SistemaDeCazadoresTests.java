@@ -2,19 +2,24 @@ package ar.edu.umlam.pb2.sistemaDeCazadores;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class SistemaDeCazadoresTests {
+	
+	private AgenciaDeCazadores agencia;
+	@Before
+	public void setUp() {
+		agencia = new AgenciaDeCazadores();
+	}
 
 	@Test
 	public void queSePuedaCrearCorrectamenteUnaAgenciaDeCazadores() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		assertNotNull(agencia);
 	}
 	
 	@Test
 	public void queSePuedaAgregarCorrectamenteUnCazadorUrbanoAlaAgencia() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador urbano = new CazadorUrbano(20);
 		
 		assertTrue(agencia.agregarCazador(urbano));
@@ -22,7 +27,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queSePuedaAgregarCorrectamenteUnCazadorRuralAlaAgencia() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador rural = new CazadorRural(30);
 		
 		assertTrue(agencia.agregarCazador(rural));
@@ -30,7 +34,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queSePuedaAgregarCorrectamenteUnCazadorSigilosoAlaAgencia() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador sigiloso = new CazadorSigiloso(25);
 		
 		assertTrue(agencia.agregarCazador(sigiloso));
@@ -53,7 +56,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queUnCazadorUrbanoIntenteCazarUnProfugo() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador urbano = new CazadorUrbano(20);
 		agencia.agregarCazador(urbano);
 		
@@ -70,7 +72,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queUnCazadorRuralIntenteCazarUnProfugo() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador rural = new CazadorRural(30);
 		agencia.agregarCazador(rural);
 		
@@ -87,7 +88,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queUnCazadorSigilosoIntenteCazarUnProfugo() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador sigiloso = new CazadorSigiloso(25);
 		agencia.agregarCazador(sigiloso);
 		
@@ -104,7 +104,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queSePuedaRemoverCorrectamenteUnProfugoDeLaZonaSiFueCapturado() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador urbano = new CazadorUrbano(20);
 		agencia.agregarCazador(urbano);
 		
@@ -121,7 +120,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queUnCazadorUrbanoPuedaIntimidarUnProfugo() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador urbano = new CazadorUrbano(20);
 		agencia.agregarCazador(urbano);
 		
@@ -142,7 +140,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queUnCazadorRuralPuedaIntimidarUnProfugo() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador rural = new CazadorRural(30);
 		agencia.agregarCazador(rural);
 		
@@ -163,7 +160,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queUnCazadorSigilosoPuedaIntimidarUnProfugo() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador sigiloso = new CazadorSigiloso(25);
 		agencia.agregarCazador(sigiloso);
 		
@@ -184,7 +180,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queUnCazadorSigilosoPuedaSumarExperienciaCorrectamente() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador sigiloso = new CazadorSigiloso(25);
 		agencia.agregarCazador(sigiloso);
 		
@@ -206,7 +201,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queUnCazadorRuralPuedaSumarExperienciaCorrectamente() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador rural = new CazadorRural(30);
 		agencia.agregarCazador(rural);
 		
@@ -228,7 +222,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queUnCazadorUrbanoPuedaSumarExperienciaCorrectamente() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador urbano = new CazadorUrbano(20);
 		agencia.agregarCazador(urbano);
 		
@@ -250,7 +243,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queLaAgenciaPuedaObtenerElReporteDelTotalDeProfugosCapturados() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador urbano = new CazadorUrbano(20);
 		Cazador rural = new CazadorRural(30);
 		agencia.agregarCazador(urbano);	
@@ -276,7 +268,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queLaAgenciaPuedaObtenerElReporteDelCazadorConMasCapturas() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador urbano = new CazadorUrbano(20);
 		Cazador rural = new CazadorRural(30);
 		agencia.agregarCazador(urbano);	
@@ -303,7 +294,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queLaAgenciaPuedaObtenerElReporteDelProfugoMasHabilCapturado() {
-		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador urbano = new CazadorUrbano(20);
 		Cazador rural = new CazadorRural(30);
 		agencia.agregarCazador(urbano);	
@@ -361,7 +351,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queUnProfugoConEntrenamientoDeEliteAlSerIntimidadoPorUnCazadorRuralNoCambieSuEstado() {		
-	    AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 	    Cazador rural = new CazadorRural(30);
 	    agencia.agregarCazador(rural);
 	    
@@ -389,7 +378,6 @@ public class SistemaDeCazadoresTests {
 	
 	@Test
 	public void queUnProfugoConProteccionLegalAlSerIntimidadoPorUnCazadorSuInocenciaNoSeaMenorA40() {		
-	    AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 	    Cazador rural = new CazadorRural(30);
 	    agencia.agregarCazador(rural);
 	    

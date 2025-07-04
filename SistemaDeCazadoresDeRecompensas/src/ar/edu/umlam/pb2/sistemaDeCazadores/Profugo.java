@@ -41,13 +41,16 @@ public class Profugo {
 		this.nivelDeHabilidad = nivelDeHabilidad;
 	}
 
+	//Opté por éste método ya que creo que es mejor que el prófugo sea quien modifique sus atributos en base 
+	//al cazador que lo intimida y que no sea el cazador quien tenga la responsalidad de modificarle los atributos
+	//al prófugo.
 	public void serIntimidado(String fraseDeIntimidacion) {
 		
 		if(getNivelDeInocencia() <= 1) {
 			setNivelDeInocencia(0); 
 		}else {
 			setNivelDeInocencia(getNivelDeInocencia()-2);
-			//Acá siento que debería estar la lógica de que evalúe si el prófugo tiene protección legal
+			//Acá evalúa que el prófugo tenga el entrenamiento de protección legal y rectifica su nivel de inocencia.
 			for(Entrenable e : this.entrenamientos) {
 				if(e instanceof ProteccionLegal &&  getNivelDeInocencia() < 40) {
 					setNivelDeInocencia(40);
