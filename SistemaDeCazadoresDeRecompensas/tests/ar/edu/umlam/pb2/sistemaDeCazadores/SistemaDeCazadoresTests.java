@@ -348,5 +348,33 @@ public class SistemaDeCazadoresTests {
 		Integer habilidadEsperada = 36;
 		assertEquals(habilidadEsperada, profu.getNivelDeHabilidad());
 	}
+	
+	@Test
+	public void queUnProfugoSePuedaEntrenarConEntrenamientoDeElite() {		
+		Profugo profu = new Profugo(true,40,9);//nervioso - inocencia - habilidad
+		EntrenamientoDeElite elite = new EntrenamientoDeElite();
+		profu.entrenarseCon(elite);
+		
+		Boolean estadoEsperado = false;
+		assertEquals(estadoEsperado, profu.getEsNervioso());
+	}
+	
+	@Test
+	public void queUnProfugoConEntrenamientoDeEliteAlSerIntimidadoPorUnCazadorRuralNoCambieSuEstado() {		
+	    AgenciaDeCazadores agencia = new AgenciaDeCazadores();
+	    Cazador rural = new CazadorRural(30);
+	    agencia.agregarCazador(rural);
+	    
+	    Profugo profugo = new Profugo(true, 40, 9);
+	    EntrenamientoDeElite elite = new EntrenamientoDeElite();
+	    profugo.entrenarseCon(elite);
+
+	    Zona zona = new Zona("Haedo");
+	    zona.agregarProfugo(profugo);
+
+	    rural.trabajar(zona);
+
+	    assertFalse(profugo.getEsNervioso());
+	}
 
 }

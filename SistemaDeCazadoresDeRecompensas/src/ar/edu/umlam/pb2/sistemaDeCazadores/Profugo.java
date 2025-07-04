@@ -52,8 +52,14 @@ public class Profugo {
 		if(fraseDeIntimidacion.equals("Soy un cazador urbano")) {
 			this.esNervioso = false;
 		}else if(fraseDeIntimidacion.equals("Soy un cazador rural")){
-			this.esNervioso = true;
-			//Verificar en caso de que el prófugo haga entrenamientoElitte.
+			Boolean tieneEntrenamientoDeElite = false;
+			for(Entrenable e : this.entrenamientos) {
+				if(e instanceof EntrenamientoDeElite) {
+					tieneEntrenamientoDeElite = true;
+					break;
+				}
+			}
+			this.esNervioso = !tieneEntrenamientoDeElite;	
 		}else if(fraseDeIntimidacion.equals("Soy un cazador sigiloso")) {
 			setNivelDeHabilidad(getNivelDeHabilidad() - 5);
 		}
