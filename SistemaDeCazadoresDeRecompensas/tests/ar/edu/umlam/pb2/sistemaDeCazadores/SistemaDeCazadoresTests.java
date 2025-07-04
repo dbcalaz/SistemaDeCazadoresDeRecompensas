@@ -183,15 +183,15 @@ public class SistemaDeCazadoresTests {
 	}
 	
 	@Test
-	public void queUnCazadorPuedaSumarExperienciaCorrectamente() {
+	public void queUnCazadorSigilosoPuedaSumarExperienciaCorrectamente() {
 		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
 		Cazador sigiloso = new CazadorSigiloso(25);
 		agencia.agregarCazador(sigiloso);
 		
 		Zona zona = new Zona("Haedo");
-		Profugo profu1 = new Profugo(false,40,59);//prófugo intimidable - como el cazador es sigiloso la hábilidad del prófugo queda en 5 menos
-		Profugo profu2 = new Profugo(false,30,60);//prófugo intimidable
-		Profugo profu3 = new Profugo(false,35,70);//prófugo intimidable
+		Profugo profu1 = new Profugo(false,40,59);//54 prófugo intimidable - como el cazador es sigiloso la hábilidad del prófugo queda en 5 menos
+		Profugo profu2 = new Profugo(false,30,60);//55 prófugo intimidable
+		Profugo profu3 = new Profugo(false,35,70);//65 prófugo intimidable
 		Profugo profu4 = new Profugo(false,10,5);//prófugo capturable
 		zona.agregarProfugo(profu1);
 		zona.agregarProfugo(profu2);
@@ -202,7 +202,50 @@ public class SistemaDeCazadoresTests {
 		Integer nuevaExperiencia = 81;
 		
 		assertEquals(nuevaExperiencia, sigiloso.getExperiencia());
+	}
 	
+	@Test
+	public void queUnCazadorRuralPuedaSumarExperienciaCorrectamente() {
+		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
+		Cazador rural = new CazadorRural(30);
+		agencia.agregarCazador(rural);
+		
+		Zona zona = new Zona("Haedo");
+		Profugo profu1 = new Profugo(false,40,59);//prófugo intimidable - como el cazador es sigiloso la hábilidad del prófugo queda en 5 menos
+		Profugo profu2 = new Profugo(false,30,60);//prófugo intimidable
+		Profugo profu3 = new Profugo(false,35,70);//prófugo intimidable
+		Profugo profu4 = new Profugo(true,10,5);//prófugo capturable
+		zona.agregarProfugo(profu1);
+		zona.agregarProfugo(profu2);
+		zona.agregarProfugo(profu3);
+		zona.agregarProfugo(profu4);
+		
+		rural.trabajar(zona);
+		Integer nuevaExperiencia = 91;
+		
+		assertEquals(nuevaExperiencia, rural.getExperiencia());
+	}
+	
+	@Test
+	public void queUnCazadorUrbanoPuedaSumarExperienciaCorrectamente() {
+		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
+		Cazador urbano = new CazadorUrbano(20);
+		agencia.agregarCazador(urbano);
+		
+		Zona zona = new Zona("Haedo");
+		Profugo profu1 = new Profugo(true,40,59);//prófugo intimidable - como el cazador es sigiloso la hábilidad del prófugo queda en 5 menos
+		Profugo profu2 = new Profugo(true,30,60);//prófugo intimidable
+		Profugo profu3 = new Profugo(true,35,70);//prófugo intimidable
+		Profugo profu4 = new Profugo(false,10,5);//prófugo capturable
+		zona.agregarProfugo(profu1);
+		zona.agregarProfugo(profu2);
+		zona.agregarProfugo(profu3);
+		zona.agregarProfugo(profu4);
+		
+		urbano.trabajar(zona);
+		Integer nuevaExperiencia = 81;
+		
+		assertEquals(nuevaExperiencia, urbano.getExperiencia());
 	}
 
 }
