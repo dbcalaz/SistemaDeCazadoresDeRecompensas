@@ -31,5 +31,20 @@ public class AgenciaDeCazadores {
 		return totalCapturados;	
 	}
 	
+	public Cazador cazadorConMasCapturas() {
+	    Cazador cazadorConMasCapturas = null;
+	    int maxCapturas = 0;
+
+	    for (Cazador c : this.cazadores) {
+	        Integer cantidadCapturas = c.getProfugosCapturados().size();
+
+	        if (cantidadCapturas > maxCapturas) {
+	            maxCapturas = cantidadCapturas;
+	            cazadorConMasCapturas = c;
+	        }
+	    }
+	    return cazadorConMasCapturas;
+	}	
+	
 
 }

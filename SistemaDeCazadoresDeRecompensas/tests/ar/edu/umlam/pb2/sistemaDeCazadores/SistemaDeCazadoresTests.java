@@ -273,5 +273,32 @@ public class SistemaDeCazadoresTests {
 		
 		assertEquals(capturadosEsperado, agencia.getCapturados());
 	}
+	
+	@Test
+	public void queLaAgenciaPuedaObtenerElReporteDelCazadorConMasCapturas() {
+		AgenciaDeCazadores agencia = new AgenciaDeCazadores();
+		Cazador urbano = new CazadorUrbano(20);
+		Cazador rural = new CazadorRural(30);
+		agencia.agregarCazador(urbano);	
+		agencia.agregarCazador(rural);
+		
+		Zona zona = new Zona("Haedo");
+		Zona zonaUno = new Zona("Ramos Mejía");
+		Profugo profu1 = new Profugo(true,40,59);
+		Profugo profu2 = new Profugo(false,10,5);
+		Profugo profu3 = new Profugo(false,35,70);
+		Profugo profu4 = new Profugo(true,29,70);
+		Profugo profu5 = new Profugo(true,10,5);
+		zona.agregarProfugo(profu1);
+		zona.agregarProfugo(profu2);
+		zonaUno.agregarProfugo(profu3);
+		zonaUno.agregarProfugo(profu4);
+		zonaUno.agregarProfugo(profu5);
+		
+		urbano.trabajar(zona);
+		rural.trabajar(zonaUno);
+		
+		assertEquals(rural, agencia.cazadorConMasCapturas());
+	}
 
 }
